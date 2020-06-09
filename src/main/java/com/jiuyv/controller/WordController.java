@@ -4,10 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.jiuyv.util.ResultVOUtil;
 import com.jiuyv.vo.ResultVO;
-
 import freemarker.template.Configuration;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -29,13 +27,15 @@ import java.util.*;
 @RequestMapping("/word")
 @RestController
 public class WordController {
+	
 	@Value("${fileStoreRootPath}")
-    String filePath;
+	String filePath;
 
 	@PostMapping("new")
     public ResultVO<Map<String, String>> create(){
-		 String filePath="C:/tmp";
+	String filePath="C:/tmp";
         try {
+        	
             Map<String,String> dataMap = new HashMap<String,String>();
             dataMap.put("f1", "Jerry");
             Configuration configuration = new Configuration();
@@ -127,48 +127,49 @@ public class WordController {
         return ResultVOUtil.success(map);
     }
 	
-	@PostMapping("/freemarkertest")
-    public ResultVO<Map<String, String>> freemakertest(){
+	@PostMapping("/freemarkerTest")
+    public ResultVO<Map<String, String>> freemarkerTest(){
         try {
             Map<String,Object> dataMap = new HashMap<String,Object>();
             dataMap.put("username", "张三");
             dataMap.put("uData", "1999年1月1日");
             dataMap.put("content", "testFreemarker");
-           
-            //表格 结束
+            // 表格 结束
             Configuration configuration = new Configuration();
             configuration.setDefaultEncoding("utf-8");
-            //指定模板路径的第二种方式,我的路径是D:/      还有其他方式
+            // 指定模板路径的第二种方式,我的路径是D:/      还有其他方式
             System.out.println("filePath==="+filePath);
             configuration.setDirectoryForTemplateLoading(new File(filePath));
             List<Map<String, Object>> newsList=new ArrayList<Map<String,Object>>();
             for(int i=1;i<=10;i++){
             Map<String, Object> map=new HashMap<String, Object>();
             map.put("title", "标题"+i);
-           map.put("content", "内容"+(i*2));
+            map.put("content", "内容"+(i*2));
             map.put("author", "作者"+(i*3));
             newsList.add(map);
            }
-           dataMap.put("newsList",newsList);
-           
+           dataMap.put("newsList",newsList);           
             // 输出文档路径及名称
             File outFile = new File(filePath+File.separator+"freemarkertest.doc");
-            //以utf-8的编码读取ftl文件
+            // 以utf-8的编码读取ftl文件
             Template t =  configuration.getTemplate("freemakertest2.ftl","utf-8");
             Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outFile), "utf-8"),10240);
             t.process(dataMap, out);
             out.close();
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             e.printStackTrace();
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
         Map<String, String> map = new HashMap<>();
         map.put("rs", "success");
 
         return ResultVOUtil.success(map);
     }
-	//获得图片的base64码
+	// 获得图片的base64码
 
     public String getImageBase(String src) {
         if(src==null||src==""){
