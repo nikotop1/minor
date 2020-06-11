@@ -17,17 +17,17 @@ public class TestExcel {
 		List<DemoDataOne> list = new ArrayList<DemoDataOne>();
         for (int i = 0; i < 10; i++) {
             DemoDataOne data = new DemoDataOne();
-            data.setString("字符串");
+            data.setString("111111111111111111111111111111111111111111111111111111");
             data.setDate(new Date());
-            data.setDoubleData(0.56);
+            data.setDoubleData(111111111111111.01);
             data.setId(UUID.randomUUID().toString().replaceAll("-",""));
             list.add(data);
         }
-        // 
+         
 		e.setData(list);
 		e.setDataModelClazz(DemoDataOne.class);
 		// 设置文件名
-		e.setExcelNameWithoutExt("test.xls");
+		e.setExcelNameWithoutExt("test.xlsx");
 		// 需要合并的列
 		e.setMergeColumeIndex(new int[] {0,1});
 		// 需要合并的行

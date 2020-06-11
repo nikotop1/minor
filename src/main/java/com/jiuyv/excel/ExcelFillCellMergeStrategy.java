@@ -6,6 +6,10 @@ import com.alibaba.excel.metadata.Head;
 import com.alibaba.excel.write.handler.CellWriteHandler;
 import com.alibaba.excel.write.metadata.holder.WriteSheetHolder;
 import com.alibaba.excel.write.metadata.holder.WriteTableHolder;
+
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFDataFormat;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
@@ -42,6 +46,7 @@ public class ExcelFillCellMergeStrategy implements CellWriteHandler {
         int curRowIndex = cell.getRowIndex();
         //当前列
         int curColIndex = cell.getColumnIndex();
+
 
         if (curRowIndex > mergeRowIndex) {
             for (int i = 0; i < mergeColumnIndex.length; i++) {

@@ -3,6 +3,7 @@ package com.jiuyv.excel;
 import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.annotation.format.DateTimeFormat;
+import com.alibaba.excel.annotation.format.NumberFormat;
 import com.alibaba.excel.annotation.write.style.ColumnWidth;
 import com.alibaba.excel.annotation.write.style.ContentRowHeight;
 import com.alibaba.excel.annotation.write.style.HeadRowHeight;
@@ -20,7 +21,7 @@ public class DemoDataOne {
     private String string;
     
     // @ColumnWidth(70)
-    @DateTimeFormat("yyyy年MM月dd日HH时mm分ss秒")
+    @DateTimeFormat("yyyy-MM-dd")
     @ExcelProperty("日期标题")
     private Date date;
     
@@ -29,9 +30,10 @@ public class DemoDataOne {
     private String id;
     
       // 当前列的宽度
-    // @ColumnWidth(70)    
+     @ColumnWidth(70) 
+     @NumberFormat("##0.00") 
     @ExcelProperty("数字标题")
-    private Double doubleData;
+    private double doubleData;
     
     
     
@@ -40,37 +42,67 @@ public class DemoDataOne {
      */
     @ExcelIgnore
     private String ignore;
-    
-    
+
+
+
 	public String getString() {
 		return string;
 	}
+
+
+
 	public void setString(String string) {
 		this.string = string;
 	}
+
+
+
 	public Date getDate() {
 		return date;
 	}
+
+
+
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public Double getDoubleData() {
-		return doubleData;
-	}
-	public void setDoubleData(Double doubleData) {
-		this.doubleData = doubleData;
-	}
-	public String getIgnore() {
-		return ignore;
-	}
-	public void setIgnore(String ignore) {
-		this.ignore = ignore;
-	}
+
+
+
 	public String getId() {
 		return id;
 	}
+
+
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
+
+
+	public double getDoubleData() {
+		return doubleData;
+	}
+
+
+
+	public void setDoubleData(double doubleData) {
+		this.doubleData = doubleData;
+	}
+
+
+
+	public String getIgnore() {
+		return ignore;
+	}
+
+
+
+	public void setIgnore(String ignore) {
+		this.ignore = ignore;
+	}
     
+    
+	
 }
