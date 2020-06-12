@@ -37,7 +37,6 @@ public class FileController {
  	 * @throws IOException
  	 */
  	@PostMapping("/templteUpload")
-   // @RequestMapping(value="/testUpload3",method=RequestMethod.POST)
     public void  testUploadFile(HttpServletRequest req, MultipartHttpServletRequest multiReq, HttpServletResponse response) throws IOException, ServletException {
         MultipartFile multipartFile= multiReq.getFile("file");
         String filename=multipartFile.getOriginalFilename();

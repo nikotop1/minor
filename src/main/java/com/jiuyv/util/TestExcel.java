@@ -33,6 +33,8 @@ public class TestExcel {
 		// 需要合并的行
 		e.setMergeRowIndex(5);
 		
+		e.setSheetName("testsheetname");
+		
 		ex.exportExcel(e);
 		
 	}

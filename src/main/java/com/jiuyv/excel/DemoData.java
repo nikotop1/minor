@@ -1,10 +1,11 @@
 package com.jiuyv.excel;
 
 import com.alibaba.excel.annotation.ExcelProperty;
+import com.alibaba.excel.metadata.BaseRowModel;
 
 //设置表头和添加的数据字段
 
-public class DemoData {
+public class DemoData extends BaseRowModel {
 
   //设置表头名称
 

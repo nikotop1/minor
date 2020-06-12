@@ -9,6 +9,8 @@ import com.alibaba.excel.write.style.column.LongestMatchColumnWidthStyleStrategy
 import com.jiuyv.excel.DemoDataOne;
 import com.jiuyv.excel.ExcelFillCellMergeStrategy;
 
+import io.swagger.annotations.ApiOperation;
+
 import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
@@ -25,13 +29,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-@Controller
-@RequestMapping("ExcelController")
-@ResponseBody
+@RestController
+@RequestMapping("/excelController")
 public class ExcelController {
 
 	@GetMapping("/getExcel")
-	public void getEXcel(HttpServletResponse response) throws IOException {
+	public void getExcel(HttpServletResponse response) throws IOException {
 		// 获取数据源
 		List<DemoDataOne> data = data();
 		// 设置输入流，设置响应域
@@ -83,16 +86,16 @@ public class ExcelController {
 	}
 
 	// TODO 解决中文乱码
-	// 用这个生成的文件会乱码
-	@RequestMapping(value = "getEXcelfromweb", method = RequestMethod.POST)
-	public void getEXcelfromweb(HttpServletResponse response) throws IOException {
+	// 用swagger测试 这个生成的文件会乱码 直接访问没有问题
+	@ApiOperation(value = "根据文件链接 任务类型下载文件", notes = "export", produces = "application/octet-stream")
+	@GetMapping("/getExcelFromweb")
+	public void getExcelfromweb(HttpServletResponse response) throws IOException {
 		// 获取数据源
 		List<DemoDataOne> data = data();
 		// 设置输入流，设置响应域
-		response.setContentType("application/vnd.ms-excel");
-		String fileName = "ceshi.xls";
-		response.setHeader("Content-disposition", "attachment;filename=" + fileName);
-		response.setCharacterEncoding("utf-8");
+		// response.setContentType("application/vnd.ms-excel");
+		response.setHeader("Content-disposition", "attachment;filename=ceshi.xlsx");
+
 		// 需要合并的列
 		int[] mergeColumeIndex = { 0, 1, 2 };
 		// 需要从第一行开始，列头第一行
@@ -102,10 +105,10 @@ public class ExcelController {
 				// 是否自动关闭输入流
 				.autoCloseStream(Boolean.TRUE)
 				.registerWriteHandler(new ExcelFillCellMergeStrategy(mergeRowIndex, mergeColumeIndex))
-                // 自定义列宽度，有数字会
-                //  .registerWriteHandler(new LongestMatchColumnWidthStyleStrategy())
+				// 自定义列宽度，有数字会
+				// .registerWriteHandler(new LongestMatchColumnWidthStyleStrategy())
 				// 设置excel保护密码
-                //.password("123456")
+				// .password("123456")
 				.sheet().doWrite(data);
 	}
 
