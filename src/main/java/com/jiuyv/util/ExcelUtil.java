@@ -50,8 +50,8 @@ public class ExcelUtil {
 	    	// 头的策略
 	        WriteCellStyle headWriteCellStyle = new WriteCellStyle();
 	        
-	        // 背景设置为红色
-	        headWriteCellStyle.setFillForegroundColor(IndexedColors.WHITE1.getIndex());  
+	        // 背景设置为白色
+	        //headWriteCellStyle.setFillForegroundColor(IndexedColors.WHITE.getIndex());  
 	        
 	        WriteFont headWriteFont = new WriteFont();
 	        
@@ -61,13 +61,13 @@ public class ExcelUtil {
 	    	 // 内容的策略
 	        WriteCellStyle contentWriteCellStyle = new WriteCellStyle();
 	        // 这里需要指定 FillPatternType 为FillPatternType.SOLID_FOREGROUND 不然无法显示背景颜色.头默认了 FillPatternType所以可以不指定
-	        contentWriteCellStyle.setFillPatternType(FillPatternType.SOLID_FOREGROUND);
-	        // 背景绿色
-	        contentWriteCellStyle.setFillForegroundColor(IndexedColors.WHITE.getIndex());
+	        //contentWriteCellStyle.setFillPatternType(FillPatternType.SOLID_FOREGROUND);
+	        // 背景白色
+	        //contentWriteCellStyle.setFillForegroundColor(IndexedColors.WHITE.getIndex());
 	        WriteFont contentWriteFont = new WriteFont();
 	        // 字体大小
 	        contentWriteFont.setFontHeightInPoints((short)20);
-	        contentWriteCellStyle.setWriteFont(contentWriteFont);
+	        //contentWriteCellStyle.setWriteFont(contentWriteFont);
 	        // 把单元格设置成文本格式
 	        contentWriteCellStyle.setDataFormat((short)49);
 	        
@@ -81,17 +81,13 @@ public class ExcelUtil {
 	                // 是否自动关闭输入流
 	                .autoCloseStream(Boolean.TRUE)
 	                
-	               // .registerWriteHandler(new MyCellWriteHandler())
+	                .registerWriteHandler(new MyCellWriteHandler())
 	                // 设置样式
-	                //.registerWriteHandler(horizontalCellStyleStrategy)
+	                .registerWriteHandler(horizontalCellStyleStrategy)
 	                // 设置需要合并的行和列
 	                .registerWriteHandler(new ExcelFillCellMergeStrategy(excelParams.getMergeRowIndex(), excelParams.getMergeColumeIndex()))
-	               // 自定义列宽度，有数字会
+	                // 自定义列宽度，有数字会
 	                .registerWriteHandler(new LongestMatchColumnWidthStyleStrategy())
-	                
-	                
-	                
-	                .registerWriteHandler(horizontalCellStyleStrategy)
 	                //设置excel保护密码
 	                //.password("123456")
 	                .sheet(excelParams.getSheetName()).doWrite(excelParams.getData());

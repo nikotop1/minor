@@ -3,19 +3,29 @@ package com.jiuyv.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelReader;
 import com.alibaba.excel.read.metadata.ReadSheet;
+import com.alibaba.excel.util.CollectionUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.jiuyv.easyexcelutil.EasyExcelUtil;
+import com.jiuyv.easyexcelutil.ExcelException;
 import com.jiuyv.excel.BankStatement;
 import com.jiuyv.excel.BankStatementListener;
+import com.jiuyv.excel.DemoData;
 import com.jiuyv.excel.NoModleDataListener;
 import com.jiuyv.vo.ResultVO;
+
 
 @RestController
 @RequestMapping("/excelReader")
@@ -48,5 +58,22 @@ public class ExcelReadController {
 			e.printStackTrace();
 		}
 	}
+	
+	@PostMapping("/importExcel")
+    
+	public void importExcel(MultipartHttpServletRequest request){
+        Iterator<String> itr = request.getFileNames();
+        String uploadedFile = itr.next();
+        List<MultipartFile> files = request.getFiles("test.xlsx");
+        if (CollectionUtils.isEmpty(files)) {
+            
+        }
+        try {
+            List<DemoData> list = EasyExcelUtil.readExcel(files.get(0),DemoData.class);
+           System.out.println(JSON.toJSONString(list, SerializerFeature.PrettyFormat));
+        } catch (ExcelException e) {
+            
+        }
+    }
 
 }
