@@ -15,11 +15,11 @@ public interface UserMapper {
     
     public List<User> findAllUser();
     
-    public List<User> findUserByUserId(int userid);
+    public List<User> findUserByUserId(String userid);
     
     public List<User> findUserByUsername(String username);
     
-    public int insertUser(User user);
+    public User insertUser(User user);
     
     public int updateUser(User user);
     

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiuyv.dao.UserMapper">
+	<resultMap id="BaseResultMap" type="com.jiuyv.entity.User">
+		<result column="id" jdbcType="VARCHAR" property="id" />
+		<result column="level" jdbcType="INTEGER" property="level" />
+		<result column="logo" jdbcType="VARCHAR" property="logo" />
+		<result column="mark" jdbcType="INTEGER" property="mark" />
+		<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="pwd" jdbcType="VARCHAR" property="pwd" />
+		<result column="role" jdbcType="INTEGER" property="role" />
+		<result column="salt" jdbcType="VARCHAR" property="salt" />
+		<result column="sex" jdbcType="VARCHAR" property="sex" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+	</resultMap>
+	<insert id="insert" parameterType="com.jiuyv.entity.User">
+		insert into tb_userrrrr (id, level, logo,
+		mark, mobile, name,
+		pwd, role, salt, sex,
+		status)
+		values (#{id,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER},
+		#{logo,jdbcType=VARCHAR},
+		#{mark,jdbcType=INTEGER}, #{mobile,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+		#{pwd,jdbcType=VARCHAR}, #{role,jdbcType=INTEGER},
+		#{salt,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR},
+		#{status,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective"
+		parameterType="com.jiuyv.entity.User">
+		insert into tb_userrrrr
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="level != null">
+				level,
+			</if>
+			<if test="logo != null">
+				logo,
+			</if>
+			<if test="mark != null">
+				mark,
+			</if>
+			<if test="mobile != null">
+				mobile,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="pwd != null">
+				pwd,
+			</if>
+			<if test="role != null">
+				role,
+			</if>
+			<if test="salt != null">
+				salt,
+			</if>
+			<if test="sex != null">
+				sex,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="level != null">
+				#{level,jdbcType=INTEGER},
+			</if>
+			<if test="logo != null">
+				#{logo,jdbcType=VARCHAR},
+			</if>
+			<if test="mark != null">
+				#{mark,jdbcType=INTEGER},
+			</if>
+			<if test="mobile != null">
+				#{mobile,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="pwd != null">
+				#{pwd,jdbcType=VARCHAR},
+			</if>
+			<if test="role != null">
+				#{role,jdbcType=INTEGER},
+			</if>
+			<if test="salt != null">
+				#{salt,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	
+	
+	
+	
+	<select id="findAllUser" resultType="com.jiuyv.entity.User">
+        select  * from tb_userrrrr;
+    </select>
+ 
+    <select id="findUserByUserId" resultType="com.jiuyv.entity.User">
+        select * from tb_userrrrr where id=#{id};
+    </select>
+    
+    <select id="findUserByUsername" resultType="com.jiuyv.entity.User">
+        select * from tb_userrrrr where name=#{name};
+    </select>
+ 
+    <insert id="insertUser" parameterType="com.jiuyv.entity.User">
+        insert into tb_userrrrr(name,pwd) values (#{name},#{pwd});
+    </insert>
+ 
+    <update id="updateUser" parameterType="com.jiuyv.entity.User">
+        update tb_userrrrr set name=#{name},pwd=#{pwd} where id=#{id};
+    </update>
+ 
+    <delete id="deleteUser" parameterType="com.jiuyv.entity.User">
+        delete from tb_userrrrr where id=#{id};
+    </delete>
+
+	
+	
+	
+</mapper>

@@ -28,7 +28,7 @@ public class UserController {
     }
  
     @PostMapping("/getUserByUserID/{userid}")
-    public List<User> findUserByUserId(@PathVariable int userid){
+    public List<User> findUserByUserId(@PathVariable String userid){
         return userService.findUserByUserId(userid);
     }
  
