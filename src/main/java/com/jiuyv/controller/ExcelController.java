@@ -28,7 +28,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-
+/**
+ * 
+ * @author 25319
+ *
+ */
 @RestController
 @RequestMapping("/excelController")
 public class ExcelController {
@@ -86,7 +90,11 @@ public class ExcelController {
 	}
 
 	// TODO 解决中文乱码
-	// 用swagger测试 这个生成的文件会乱码 直接访问没有问题
+	/**
+	 *  用swagger测试 这个生成的文件会乱码 直接访问没有问题
+	 * @param response
+	 * @throws IOException
+	 */
 	@ApiOperation(value = "根据文件链接 任务类型下载文件", notes = "export", produces = "application/octet-stream")
 	@GetMapping("/getExcelFromweb")
 	public void getExcelfromweb(HttpServletResponse response) throws IOException {
@@ -112,7 +120,10 @@ public class ExcelController {
 				.sheet().doWrite(data);
 	}
 
-	// 获取数据的地方
+	/**
+	 * 获取数据的地方
+	 * @return
+	 */
 	private static List<DemoDataOne> data() {
 		List<DemoDataOne> list = new ArrayList<DemoDataOne>();
 		for (int i = 0; i < 10; i++) {

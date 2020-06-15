@@ -30,7 +30,10 @@ import com.jiuyv.vo.ResultVO;
 @RestController
 @RequestMapping("/excelReader")
 public class ExcelReadController {
-	// 有对象的读
+	
+	/**
+	 * 有对象的读
+	 */
 	@PostMapping("/readTest")
 	public void readTest(MultipartFile file) {
 		InputStream in;
@@ -47,7 +50,9 @@ public class ExcelReadController {
 
 	}
 
-	// 不创建对象的读
+	/**
+	 *  不创建对象的读
+	 */
 	@PostMapping("/readTestTwo")
 	public void readTestTwo(MultipartFile file) {
 		InputStream in;

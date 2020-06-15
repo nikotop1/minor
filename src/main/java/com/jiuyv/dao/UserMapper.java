@@ -2,12 +2,9 @@ package com.jiuyv.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import com.jiuyv.entity.User;
-@Mapper
+
 public interface UserMapper {
     int insert(User record);
 

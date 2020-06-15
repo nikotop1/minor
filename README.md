@@ -55,3 +55,32 @@ contentWriteCellStyle.setDataFormat((short)49);
 
 ------
 
+## 第二周
+
+### mybatis
+
+------
+
+#### mybatis-Generator
+
+##### 问题
+
+代码生成器会生成数据库中同名表的字段
+
+##### 解决方法
+
+添加
+
+```xml
+<property name="nullCatalogMeansCurrent" value="true"/>
+```
+
+```xml
+<!--数据库链接URL，用户名、密码 -->
+<jdbcConnection driverClass="${spring.datasource.driver-class-name}"
+			    connectionURL="${spring.datasource.url}"
+			    userId="${spring.datasource.username}"                                           password="${spring.datasource.password}">
+			<property name="nullCatalogMeansCurrent" value="true"/>
+</jdbcConnection>
+```
+

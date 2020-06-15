@@ -19,7 +19,7 @@ public class DetailTablePolicy extends DynamicTableRenderPolicy {
 
     @Override
     public void render(XWPFTable table, Object data) {
-        if (null == data) return;
+        if (null == data) { return;}
         DetailData detailData = (DetailData) data;
 
         List<RowRenderData> goods = detailData.getGoods();
@@ -28,7 +28,9 @@ public class DetailTablePolicy extends DynamicTableRenderPolicy {
             table.removeRow(goodsStartRow);
             for (int i = 0; i < goods.size(); i++) {
                 XWPFTableRow insertNewTableRow = table.insertNewTableRow(goodsStartRow);
-                for (int j = 0; j < 6; j++) insertNewTableRow.createCell();
+                for (int j = 0; j < 6; j++) {
+                	insertNewTableRow.createCell();
+                }
                 MiniTableRenderPolicy.Helper.renderRow(table, goodsStartRow, goods.get(i));
             }
         }

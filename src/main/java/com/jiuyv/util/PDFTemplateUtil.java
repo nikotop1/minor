@@ -10,18 +10,18 @@ import com.lowagie.text.pdf.BaseFont;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 
-public class PDFTemplateUtil {
+public class PdfTemplateUtil {
 	 /**
      * 通过模板导出pdf文件
      * @param data 数据
      * @param templateFileName 模板文件名
      * @throws Exception
      */
-    public static ByteArrayOutputStream createPDF(Map<String,Object> data, String templateFileName) throws Exception {
+    public static ByteArrayOutputStream createPdf(Map<String,Object> data, String templateFileName) throws Exception {
         // 创建一个FreeMarker实例, 负责管理FreeMarker模板的Configuration实例
         Configuration cfg = new Configuration(Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS);
         // 指定FreeMarker模板文件的位置
-        cfg.setClassForTemplateLoading(PDFTemplateUtil.class,"/templates");
+        cfg.setClassForTemplateLoading(PdfTemplateUtil.class,"/templates");
         ITextRenderer renderer = new ITextRenderer();
         OutputStream out = new ByteArrayOutputStream();
         try {

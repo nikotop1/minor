@@ -1,6 +1,6 @@
 package com.jiuyv.util;
 
-public class PDFDataTest {
+public class PdfDataTest {
 	 private Integer column1;
 
 	    private String column2;
@@ -11,7 +11,7 @@ public class PDFDataTest {
 
 	    private String column5;
 
-	    public PDFDataTest(Integer column1, String column2, String column3, String column4, String column5) {
+	    public PdfDataTest(Integer column1, String column2, String column3, String column4, String column5) {
 	        super();
 	        this.column1 = column1;
 	        this.column2 = column2;
