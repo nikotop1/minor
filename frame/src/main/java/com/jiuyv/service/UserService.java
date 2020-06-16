@@ -40,4 +40,6 @@ public interface UserService {
      * @return
      */
     int createUser(User user);
+
+	int getUserCount();
 }

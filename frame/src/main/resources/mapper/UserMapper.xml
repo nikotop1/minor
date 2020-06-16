@@ -160,4 +160,9 @@
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  
+  <!--查询统计人数-->
+    <select id="countUser" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM tb_user
+    </select>
 </mapper>

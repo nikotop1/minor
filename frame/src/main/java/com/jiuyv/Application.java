@@ -3,6 +3,7 @@ package com.jiuyv;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * Spring Boot 应用启动类
@@ -16,6 +17,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 // mapper 接口类扫描包配置
 @MapperScan("com.jiuyv.dao")
 
+@EnableEurekaClient
 public class Application {
 
     public static void main(String[] args) {
