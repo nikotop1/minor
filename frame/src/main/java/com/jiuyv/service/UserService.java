@@ -41,5 +41,8 @@ public interface UserService {
      */
     int createUser(User user);
 
+    int createUserOne(User user);
+    
+    
 	int getUserCount();
 }

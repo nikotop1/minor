@@ -62,6 +62,16 @@ public class UserController {
         return userService.createUser(user);
     }
     
+    /**
+     * 增
+     * @param user
+     * @return
+     */
+    @PostMapping("/createUserOne")
+    public int createUserOne(@RequestBody User user) {
+        return userService.createUserOne(user);
+    }
+    
     @GetMapping("/countUser")
     public int getUserCount() {
     	return userService.getUserCount();

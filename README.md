@@ -84,3 +84,8 @@ contentWriteCellStyle.setDataFormat((short)49);
 </jdbcConnection>
 ```
 
+# TODO
+
+两句SQL,第一条成功，第二条失败，Spring进行回滚。
+
+大事务中两个事务，第一个事务成功，第二个事务失败，回滚。
